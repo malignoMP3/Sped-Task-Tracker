@@ -1,0 +1,6 @@
+@SpedTaskTracker.Api_HostAddress = http://localhost:5147
+
+GET {{SpedTaskTracker.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
