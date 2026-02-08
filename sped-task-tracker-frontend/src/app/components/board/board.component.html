@@ -1,0 +1,21 @@
+<div class="min-h-screen bg-zinc-100">
+  <div class="flex justify-evenly p-6 ">
+    <app-column
+      title="Pendente"
+      status="pending"
+      [tasks]="pendingTasks"
+    ></app-column>
+
+    <app-column
+      title="Em andamento"
+      status="progress"
+      [tasks]="progressTasks"
+    ></app-column>
+
+    <app-column
+      title="Concluído"
+      status="done"
+      [tasks]="doneTasks"
+    ></app-column>
+  </div>
+</div>
