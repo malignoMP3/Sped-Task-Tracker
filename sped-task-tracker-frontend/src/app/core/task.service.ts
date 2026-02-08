@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Task } from '../models/task.model';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TaskService {
+
+  private readonly apiUrl = 'http://localhost:5147/api/Task'
+  // inserido porta fixa para não precisar utilizar o .env com a url
+
+
+
+  constructor(private http: HttpClient) { }
+
+
+getAll(): Observable<Task[]>{
+  return this.http.get<Task[]>(this.apiUrl)
+}
+
+
+}

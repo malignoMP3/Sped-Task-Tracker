@@ -1,11 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { NgFor, NgClass } from '@angular/common';
+import { Task } from '../../models/task.model';
 
-interface MockTask {
-  title: string;
-  description: string;
-}
 
 @Component({
   selector: 'app-column',
@@ -15,6 +12,5 @@ interface MockTask {
 })
 export class ColumnComponent {
   @Input() title!: string;
-  @Input() status!: 'pending' | 'progress' | 'done';
-  @Input() tasks: MockTask[] = [];
+  @Input() tasks: Task[] = [];
 }

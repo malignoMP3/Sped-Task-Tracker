@@ -1,10 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ColumnComponent } from '../column/column.component';
-
-interface MockTask {
-  title: string;
-  description: string;
-}
+import { TaskService } from '../../core/task.service';
+import { Task } from '../../models/task.model';
+import { TaskStatus } from '../../models/task-status.model';
 
 @Component({
   selector: 'app-board',
@@ -12,18 +10,26 @@ interface MockTask {
   imports: [ColumnComponent],
   templateUrl: './board.component.html',
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit {
 
-  pendingTasks: MockTask[] = [
-    { title: 'Teste mock 1', description: 'Teste 1' },
-    { title: 'Teste mock 2', description: 'Teste 2' }
-  ];
+  pendingTasks: Task[] = [];
+  progressTasks: Task[] = [];
+  doneTasks: Task[] = [];
 
-  progressTasks: MockTask[] = [
-    { title: 'Teste mock 3', description: 'Teste 3' }
-  ];
+  constructor(private taskService: TaskService) { }
 
-  doneTasks: MockTask[] = [
-    { title: 'Teste mock 4', description: 'Teste 4' }
-  ];
+
+loadTasks(): void {
+  this.taskService.getAll().subscribe(tasks => {
+    this.pendingTasks = tasks.filter(t => t.status === TaskStatus.Pendente);
+    this.progressTasks = tasks.filter(t => t.status === TaskStatus.EmAndamento);
+    this.doneTasks = tasks.filter(t => t.status === TaskStatus.Concluido);
+  });
+}
+
+
+
+  ngOnInit(): void {
+    this.loadTasks();
+  }
 }
