@@ -9,13 +9,10 @@
     {{ title }}
   </h3>
 
-<div *ngFor="let task of tasks" cdkDrag>
-  <app-card
-    [title]="task.titulo"
-    [description]="task.descricao"
-    [dataCriacao]="task.dataCriacao"
-    (select)="onSelect(task)">
-  </app-card>
-</div>
+  <div *ngFor="let task of tasks" cdkDrag>
+    <app-card [title]="task.titulo" [description]="task.descricao" [dataCriacao]="task.dataCriacao"
+      (select)="onSelect(task)" (delete)="onDelete(task)">
+    </app-card>
+  </div>
 
 </div>

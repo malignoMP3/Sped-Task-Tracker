@@ -28,11 +28,18 @@ export class ColumnComponent {
 
   @Output() taskDropped = new EventEmitter<CdkDragDrop<Task[]>>();
 
+  @Output() deleteTask = new EventEmitter<Task>();
+
+
   onDrop(event: CdkDragDrop<Task[]>) {
     this.taskDropped.emit(event);
   }
 
   onSelect(task: Task): void {
     this.selectTask.emit(task);
+  }
+
+  onDelete(task: Task): void {
+    this.deleteTask.emit(task);
   }
 }

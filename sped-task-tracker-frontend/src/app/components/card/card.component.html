@@ -1,4 +1,11 @@
-<div class="bg-white rounded-md p-3 shadow-sm mb-3 cursor-pointer hover:bg-zinc-50" (click)="select.emit()">
+<div class="relative bg-white rounded-md p-3 shadow-sm mb-3 cursor-pointer hover:bg-zinc-50" (click)="select.emit()">
+
+  <button class="absolute top-2 right-2 z-10 text-zinc-400 hover:text-red-600"
+    (click)="delete.emit(); $event.stopPropagation()" type="button">
+    <mat-icon fontIcon="delete"></mat-icon>
+  </button>
+
+
   <p class="text-xs text-zinc-400 mb-1">
     {{ dataCriacao | date:'dd/MM/yyyy HH:mm' }}
   </p>

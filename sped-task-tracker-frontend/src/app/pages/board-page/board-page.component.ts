@@ -61,4 +61,20 @@ export class BoardPageComponent {
     this.closeModal();
     this.boardComponent.loadTasks();
   }
+
+
+
+  confirmDelete(task: Task): void {
+    console.log('delete page', task);
+
+    if (!confirm(`Excluir "${task.titulo}"?`)) return;
+
+    this.taskService.delete(task.id).subscribe({
+      next: () => {
+        console.log('deleted');
+        this.boardComponent.loadTasks();
+      }
+    });
+  }
+
 }

@@ -14,6 +14,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 export class BoardComponent implements OnInit {
 
   @Output() editTask = new EventEmitter<Task>();
+  @Output() deleteTask = new EventEmitter<Task>();
+
 
   pendingTasks: Task[] = [];
   progressTasks: Task[] = [];
@@ -34,18 +36,18 @@ export class BoardComponent implements OnInit {
 
   }
 
-
   onEditTask(task: Task): void {
     this.editTask.emit(task);
+  }
+
+  onDeleteTask(task: Task): void {
+    this.deleteTask.emit(task);
   }
 
 
   ngOnInit(): void {
     this.loadTasks();
   }
-
-
-
 
 
   onTaskDropped(
@@ -79,6 +81,10 @@ export class BoardComponent implements OnInit {
       status: task.status
     }).subscribe();
   }
+
+
+
+
 
 
 }

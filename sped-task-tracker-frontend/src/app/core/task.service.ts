@@ -13,8 +13,6 @@ export class TaskService {
   private readonly apiUrl = 'http://localhost:5147/api/Task'
   // inserido porta fixa para não precisar utilizar o .env com a url
 
-
-
   constructor(private http: HttpClient) { }
 
 
@@ -42,6 +40,11 @@ export class TaskService {
     return this.http.put<Task>(`${this.apiUrl}/${id}`, task);
   }
 
+
+
+  delete(id: number) {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
 
 
 

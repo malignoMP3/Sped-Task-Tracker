@@ -11,7 +11,9 @@
     </button>
   </div>
 
-  <app-board (editTask)="openEditModal($event)"></app-board>
+  <app-board (editTask)="openEditModal($event)" (deleteTask)="confirmDelete($event)">
+  </app-board>
+
 
   <div *ngIf="isCreateModalOpen" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="relative w-full max-w-xl mx-4">
