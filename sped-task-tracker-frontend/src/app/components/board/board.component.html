@@ -1,17 +1,32 @@
 <div class="min-h-screen bg-zinc-100">
   <div class="flex justify-evenly p-6">
 
-    <app-column title="Pendente" [tasks]="pendingTasks" dropListId="pendente" [connectedTo]="['andamento', 'concluido']"
-      (taskDropped)="onTaskDropped($event, TaskStatus.Pendente)"></app-column>
+    <app-column
+      title="Pendente"
+      [tasks]="pendingTasks"
+      dropListId="pendente"
+      [connectedTo]="['andamento', 'concluido']"
+      (selectTask)="onEditTask($event)"
+      (taskDropped)="onTaskDropped($event, TaskStatus.Pendente)">
+    </app-column>
 
-    <app-column title="Em andamento" [tasks]="progressTasks" dropListId="andamento"
+    <app-column
+      title="Em andamento"
+      [tasks]="progressTasks"
+      dropListId="andamento"
       [connectedTo]="['pendente', 'concluido']"
-      (taskDropped)="onTaskDropped($event, TaskStatus.EmAndamento)"></app-column>
+      (selectTask)="onEditTask($event)"
+      (taskDropped)="onTaskDropped($event, TaskStatus.EmAndamento)">
+    </app-column>
 
-    <app-column title="Concluído" [tasks]="doneTasks" dropListId="concluido" [connectedTo]="['pendente', 'andamento']"
-      (taskDropped)="onTaskDropped($event, TaskStatus.Concluido)"></app-column>
-
-
+    <app-column
+      title="Concluído"
+      [tasks]="doneTasks"
+      dropListId="concluido"
+      [connectedTo]="['pendente', 'andamento']"
+      (selectTask)="onEditTask($event)"
+      (taskDropped)="onTaskDropped($event, TaskStatus.Concluido)">
+    </app-column>
 
   </div>
 </div>
