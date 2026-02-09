@@ -30,5 +30,13 @@ export class TaskService {
   }
 
 
-
+  update(
+    id: number,
+    task: {
+      titulo: string;
+      descricao: string;
+    }
+  ): Observable<Task> {
+    return this.http.put<Task>(`${this.apiUrl}/${id}`, task);
+  }
 }

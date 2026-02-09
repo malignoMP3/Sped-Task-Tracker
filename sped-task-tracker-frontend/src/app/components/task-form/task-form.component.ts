@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskStatus } from '../../models/task-status.model';
+import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-task-form',
@@ -9,6 +10,9 @@ import { TaskStatus } from '../../models/task-status.model';
   templateUrl: './task-form.component.html',
 })
 export class TaskFormComponent {
+
+  @Input() task: Task | null = null;
+  @Input() isEditMode = false;
 
   titulo = '';
   descricao = '';
@@ -21,6 +25,15 @@ export class TaskFormComponent {
     titulo: string;
     descricao: string;
   }>();
+
+
+  ngOnInit(): void {
+    if (this.task) {
+      this.titulo = this.task.titulo;
+      this.descricao = this.task.descricao;
+      this.status = this.task.status;
+    }
+  }
 
   onSubmit(): void {
     this.submitTask.emit({

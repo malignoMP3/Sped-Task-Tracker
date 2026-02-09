@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -8,7 +8,10 @@ import { Component, Input } from '@angular/core';
   templateUrl: './card.component.html',
 })
 export class CardComponent {
+
   @Input() title!: string;
   @Input() description!: string;
   @Input() dataCriacao!: string;
+
+  @Output() select = new EventEmitter<void>();
 }

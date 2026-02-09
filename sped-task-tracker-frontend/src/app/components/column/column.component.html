@@ -10,11 +10,12 @@
     {{ title }}
   </h3>
 
-<app-card
-  *ngFor="let task of tasks"
-  [title]="task.titulo"
-  [description]="task.descricao"
-  [dataCriacao]="task.dataCriacao"
-></app-card>
+  <app-card
+    *ngFor="let task of tasks"
+    [title]="task.titulo"
+    [description]="task.descricao"
+    [dataCriacao]="task.dataCriacao"
+    (select)="onSelect(task)"
+  ></app-card>
 
 </div>
