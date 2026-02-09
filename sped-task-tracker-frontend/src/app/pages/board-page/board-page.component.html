@@ -1,14 +1,16 @@
 <div class="min-h-screen bg-zinc-100">
 
-  <div class="flex justify-between items-center px-6 pt-6">
-    <h1 class="text-xl font-semibold text-zinc-800 ">
-      Task Board
+  <div class="relative flex items-center px-6 pt-6">
+    <h1 class="absolute left-1/2 -translate-x-1/2 text-xl font-semibold text-zinc-800">
+      SPED Task Tracker
     </h1>
 
-    <button (click)="openModal()"
-      class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">
-      + Nova Task
-    </button>
+    <div class="ml-auto">
+      <button (click)="openModal()"
+        class="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 transition">
+        + Nova Task
+      </button>
+    </div>
   </div>
 
   <app-board (editTask)="openEditModal($event)" (deleteTask)="confirmDelete($event)">
