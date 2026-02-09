@@ -20,7 +20,7 @@ export class BoardPageComponent {
   selectedTask: Task | null = null;
   isEditMode = false;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) { }
 
   openModal(): void {
     this.selectedTask = null;
@@ -42,9 +42,14 @@ export class BoardPageComponent {
 
   onSubmitTask(data: { titulo: string; descricao: string }): void {
     if (this.isEditMode && this.selectedTask) {
-      this.taskService.update(this.selectedTask.id, data).subscribe({
+      this.taskService.update(this.selectedTask.id, {
+        titulo: data.titulo,
+        descricao: data.descricao,
+        status: this.selectedTask.status
+      }).subscribe({
         next: () => this.afterSave()
       });
+
     } else {
       this.taskService.create(data).subscribe({
         next: () => this.afterSave()

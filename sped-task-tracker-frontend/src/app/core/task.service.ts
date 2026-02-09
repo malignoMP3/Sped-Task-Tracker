@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from '../models/task.model';
+import { TaskStatus } from '../models/task-status.model';
 
 
 @Injectable({
@@ -35,8 +36,15 @@ export class TaskService {
     task: {
       titulo: string;
       descricao: string;
+      status: TaskStatus;
     }
   ): Observable<Task> {
     return this.http.put<Task>(`${this.apiUrl}/${id}`, task);
   }
+
+
+
+
+
+
 }
